@@ -41,8 +41,9 @@ public class SwiftCloudKitPlugin: NSObject, FlutterPlugin {
         
             }
                         
-            let record = CKRecord(recordType: "StorageItem")
-            record.setValue(value, forKey: key)
+            let record = CKRecord(recordType: "self")
+            record.setValue(key, forKey: 'name')
+            record.setValue(value, forKey: 'data')
             
             database.save(record) { (record, error) in
                 if record != nil, error == nil {
@@ -62,7 +63,7 @@ public class SwiftCloudKitPlugin: NSObject, FlutterPlugin {
             let database = CKContainer(identifier: containerId).privateCloudDatabase
 
            
-            let query = CKQuery(recordType: "StorageItem", predicate: NSPredicate(value: true))
+            let query = CKQuery(recordType: "self", predicate: NSPredicate(value: true))
             
             database.perform(query, inZoneWith: nil) { (records, error) in
 
@@ -87,7 +88,7 @@ public class SwiftCloudKitPlugin: NSObject, FlutterPlugin {
             let database = CKContainer(identifier: containerId).privateCloudDatabase
 
            
-            let query = CKQuery(recordType: "StorageItem", predicate: NSPredicate(value: true))
+            let query = CKQuery(recordType: "self", predicate: NSPredicate(value: true))
             
             database.perform(query, inZoneWith: nil) { (records, error) in
 
@@ -110,7 +111,7 @@ public class SwiftCloudKitPlugin: NSObject, FlutterPlugin {
             let database = CKContainer(identifier: containerId).privateCloudDatabase
 
            
-            let query = CKQuery(recordType: "StorageItem", predicate: NSPredicate(value: true))
+            let query = CKQuery(recordType: "self", predicate: NSPredicate(value: true))
             
             database.perform(query, inZoneWith: nil) { (records, error) in
                 
